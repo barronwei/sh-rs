@@ -12,3 +12,8 @@ A shell written in Rust
 
 - Add simple shell loop
 - Support basic command with arguments
+
+## 0.0.3
+
+- Add handle for errors: empty or unknown command
+- Change prompt from ">" to "[sh-rs]"

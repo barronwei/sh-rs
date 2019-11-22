@@ -3,18 +3,33 @@ use std::process::Command;
 
 fn main() {
   loop {
-    print!("> ");
+    print!("[sh-rs] ");
     stdout().flush().unwrap();
 
-    let mut input = String::new();
-    stdin().read_line(&mut input).unwrap();
+    let mut line = String::new();
+    stdin().read_line(&mut line).unwrap();
 
-    let mut parts = input.trim().split_whitespace();
+    let data = line.trim();
 
-    let cmd = parts.next().unwrap();
-    let arg = parts;
+    if data.is_empty() {
+      continue;
+    }
 
-    let mut res = Command::new(cmd).args(arg).spawn().unwrap();
-    res.wait().unwrap();
+    let mut list = data.split_whitespace();
+    let call = list.next().unwrap();
+    let args = list;
+
+    match call {
+      "cd" => {}
+      _ => {
+        let cmd = Command::new(call).args(args).spawn();
+        match cmd {
+          Ok(mut c) => {
+            c.wait().unwrap();
+          }
+          Err(e) => eprint!("{}\n", e),
+        }
+      }
+    }
   }
 }
