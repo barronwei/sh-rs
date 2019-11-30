@@ -17,3 +17,7 @@ A shell written in Rust
 
 - Add handle for errors: empty or unknown command
 - Change prompt from ">" to "[sh-rs]"
+
+## 0.0.4
+
+- Add proper parsing for basic command structures

@@ -1,6 +1,8 @@
 use std::io::{stdin, stdout, Write};
 use std::process::Command;
 
+mod utils;
+
 fn main() {
   loop {
     print!("[sh-rs] ");
